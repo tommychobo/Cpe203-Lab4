@@ -59,8 +59,11 @@ public final class DrawLottery
 	}
   }
 
-  //necessary main to use Processing to draw 
-   public static void main(String[] args) {
+    //necessary main to use Processing to draw
+    public static void main(String[] args) {
+        Game g = new Game();
+        g.winningLotNumber();
+        g.winningNumCheck();
         PApplet.main("DrawLottery");
     }
 }

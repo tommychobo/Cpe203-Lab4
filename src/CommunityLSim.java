@@ -7,6 +7,7 @@ import java.util.*;
 public final class CommunityLSim {
 
     ArrayList<CommunityMember> communityMembers;
+    ArrayList<CommunityMember> players;
     Random random = new Random();
     //you will need to add more instance variables
 
@@ -17,7 +18,7 @@ public final class CommunityLSim {
     public CommunityLSim( int numP) {
         //create the players
         this.communityMembers = new ArrayList<>();
-
+        this.players = new ArrayList<>();
         for (int i = 0; i < numP; i++) {
             if (i < numP /2.0)
                 this.communityMembers.add(new CommunityMember(CMemberKind.POORLY_PAID, (float)(99+Math.random())));
@@ -42,13 +43,22 @@ public final class CommunityLSim {
      */
     // TODO: Implement this method.
     public void addPocketChange() {
-
+        for(CommunityMember cm : communityMembers){
+            if(cm.getKind() == CMemberKind.WELL_PAID){
+                cm.addMoney(0.1f);
+            }
+            else{
+                cm.addMoney(0.03f);
+            }
+        }
     }
 
     // TODO: Write a method that computes a new list of lottery players,
     //  choosing from the list of community members.
     //  You will likely want to change this method signature.
     private void reDoWhoPlays() {
+        int numWell = (int)(communityMembers.size()*0.2); //40 percent of half of population
+        int numPoor = (int)(communityMembers.size()*0.3); //60 percent of half of population
 
     }
 
@@ -71,6 +81,7 @@ public final class CommunityLSim {
         // Simulate the lottery (see steps below)
         for (int year=0; year < numYears; year++) {
             // TODO Add pocket change for all community members, whether or not they're playing.
+            addPocketChange();
             // TODO Re-compute the players who are playing the lottery in the current year.
             // TODO Simulate the lottery for those players.
 
