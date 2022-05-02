@@ -15,7 +15,7 @@ public class Game {
             }
         }
     }
-
+    //test
     public int numMatches(HashSet<Integer> playerVals){
         int count = 0;
         Object[] pVals = playerVals.toArray();
@@ -26,7 +26,7 @@ public class Game {
         }
         return count;
     }
-
+    //test
     public float getWinnings(CommunityMember cm){
         int matches = numMatches(cm.getLottoNums());
         switch(matches){
@@ -46,7 +46,7 @@ public class Game {
     }
 
 
-    public void winningNumCheck(){
+    public void testWinningNums(){
         System.out.println("Num items: "+winningNums.size());
         for(int i = 1; i <= 42; i++){
             if(winningNums.contains(i)){
@@ -59,7 +59,21 @@ public class Game {
             CommunityMember cm = new CommunityMember(CMemberKind.WELL_PAID, 100.5f);
             cm.playRandom();
             System.out.println("Number of matches: "+numMatches(cm.getLottoNums()));
+            System.out.println("Winnings: "+getWinnings(cm));
         }
+        //testing to get at least 4 matches
+        CommunityMember comm = new CommunityMember(CMemberKind.WELL_PAID, 100.5f);
+        while(numMatches(comm.getLottoNums()) < 4){
+            comm.playRandom();
+        }
+        System.out.println("rigged winnings: "+getWinnings(comm));
+
+        //testing to get at least 5 matches
+        CommunityMember com = new CommunityMember(CMemberKind.WELL_PAID, 100.5f);
+        while(numMatches(com.getLottoNums()) < 5){
+            com.playRandom();
+        }
+        System.out.println("max winnings: "+getWinnings(com));
     }
 
     public HashSet<Integer> getWinningNums() {

@@ -27,6 +27,7 @@ public class CommunityMember {
 	}
 
 	public void playRandom(){
+		lottoNums.clear();
 		int numCount = 0;
 		while(numCount < 5){
 			if(lottoNums.add((int)(Math.random()*42)+1)){
@@ -39,6 +40,12 @@ public class CommunityMember {
 	public int getG() { return this.green; }
 	public int getB() { return this.blue; }
 	public float getMoney() { return this.money; }
+	public float getPastMoney(int year){
+		if(year >= 0 && year < moneyOverTime.size()){
+			return moneyOverTime.get(year);
+		}
+		return 0.0f;
+	}
 	public void addMoney(float m){
 		this.money += m;
 	}

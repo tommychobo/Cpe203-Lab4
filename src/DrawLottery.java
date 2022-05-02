@@ -63,7 +63,7 @@ public final class DrawLottery
     public static void main(String[] args) {
         Game g = new Game();
         g.winningLotNumber();
-        g.winningNumCheck();
+        g.testWinningNums();
         PApplet.main("DrawLottery");
     }
 }
